@@ -4,6 +4,7 @@ import axios from "axios";
 import { Grid } from "@mui/material";
 import SearchBar from "./components/SearchBar/SearchBar";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
+import VideoList from './components/VideoList/VideoList';
 
 class App extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class App extends Component {
               {this.state.selectedVideo !== null && <VideoPlayer video={this.state.selectedVideo} />}
             </Grid>
             <Grid item xs={4}>
-              
+              <VideoList videos={this.state.videos}/>
             </Grid>
           </Grid>
         </Grid>

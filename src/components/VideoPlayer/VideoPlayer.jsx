@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Typography, iFrame } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 
 const VideoPlayer = (props) => {
   const video = props.video;
