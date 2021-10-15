@@ -6,10 +6,12 @@ import {Grid, Paper, Typography} from '@mui/material';
 
 const VideoList = (props)=>{
     console.log(props.videos)
-    const listOfVideos = props.videos.map((video, id)=> <VideoItem key={id} video={video}/>)
+    const listOfVideos = props.videos.map((video, id)=> <VideoItem onVideoSelect={props.onVideoSelect} key={id} video={video}/>)
 
     return(
-        <h1>{listOfVideos}</h1>
+        <Grid container spacing={10}>
+            {listOfVideos}
+        </Grid>
     );
 }
 export default VideoList;

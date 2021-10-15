@@ -15,6 +15,12 @@ class App extends Component {
     };
   }
 
+  onVideoSelect = (video) => {
+    this.setState({
+      selectedVideo: video
+    });
+  }
+
   getVideoSearch = async (searchTerm) => {
     const response = await axios.get(
       "https://www.googleapis.com/youtube/v3/search",
@@ -47,7 +53,7 @@ class App extends Component {
               {this.state.selectedVideo !== null && <VideoPlayer video={this.state.selectedVideo} />}
             </Grid>
             <Grid item xs={4}>
-              <VideoList videos={this.state.videos}/>
+              <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
             </Grid>
           </Grid>
         </Grid>
