@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.state = { 
         videos : [],
-        selectedVideo : null,
+        selectedVideo : 'zme6xXL1WQ'
      }
   }
 
@@ -21,7 +21,7 @@ class App extends Component {
       params : {
         part : 'snippet',
         maxResults : 5,
-        key : 'AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU',
+        key : 'AIzaSyAaSSFVXSYhrMuUeApIDg7LTK9RVv5Rm-0',
         q : searchTerm,
       }
     });
@@ -41,7 +41,8 @@ class App extends Component {
               <SearchBar formSubmission={this.getVideoSearch}/>
             </Grid>
             <Grid item xs={8}>
-              <VideoPlayer video={this.state.selectedVideo}/>
+              {console.log("Before Video Comp:", this.state.selectedVideo)}
+              {this.state.selectedvideo !== null && <VideoPlayer video={this.state.selectedVideo}/>}
             </Grid>
             <Grid item xs={4}>
             </Grid>
