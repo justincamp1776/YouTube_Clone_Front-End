@@ -9,7 +9,10 @@ import VideoPlayer from './components/VideoPlayer/VideoPlayer';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = { 
+        videos : [],
+        selectedVideo : null,
+     }
   }
 
   getVideoSearch  = async (searchTerm) =>{
@@ -19,10 +22,14 @@ class App extends Component {
         part : 'snippet',
         maxResults : 5,
         key : 'AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU',
-        q : searchTerm,     
+        q : searchTerm,
       }
     });
-    console.log(response.data.items)
+    this.setState({
+      videos : response.data.items,
+      selectedVideo : response.data.items[0]
+    })
+    console.log(this.state.selectedVideo)
   }
 
   render() { 
@@ -34,7 +41,7 @@ class App extends Component {
               <SearchBar formSubmission={this.getVideoSearch}/>
             </Grid>
             <Grid item xs={8}>
-              <VideoPlayer />
+              <VideoPlayer video={this.state.selectedVideo}/>
             </Grid>
             <Grid item xs={4}>
             </Grid>
