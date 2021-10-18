@@ -6,7 +6,7 @@ const VideoPlayer = (props) => {
   console.log(video);
   const videoSrc = `https://www.youtube.com/embed/${video.id.videoId}`;
 
-//   set default value to video in the event that video is undefined.
+
 
   return (
     // <h1>Stop</h1>

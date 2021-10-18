@@ -5,21 +5,24 @@ import { Grid } from "@mui/material";
 import SearchBar from "./components/SearchBar/SearchBar";
 import VideoPlayer from "./components/VideoPlayer/VideoPlayer";
 import VideoList from './components/VideoList/VideoList';
+import Comment from './components/Comment/Comment';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       videos: [],
-      selectedVideo: null
+      selectedVideo: null,
+      comments: [],
     };
   }
 
   componentDidMount = () =>{
     this.getDefaultVideo();
+    this.getAllComments();
+    this.filterCommentsById();
   }
 
-  getAllComments 
 
   getDefaultVideo = async () =>{
     const response = await axios.get(
@@ -30,7 +33,6 @@ class App extends Component {
           key :  "AIzaSyAaSSFVXSYhrMuUeApIDg7LTK9RVv5Rm-0",
         }
       }
-
     )
     this.setState({
       selectedVideo : response.data.items[0],
@@ -38,6 +40,28 @@ class App extends Component {
     this.getRelatedVideos();
     console.log('componentDidMount:', response.data.items[0])
   }
+
+  getAllComments = async () =>{
+    const response = await axios.get('http://127.0.0.1:8000/comments/');
+    console.log('comments:', response.data);
+    this.setState({
+      comments: response.data.data
+    })
+    console.log('comments:', this.state.comments)
+  }
+
+  filterCommentsById = async () =>{
+    const response = this.state.comments.filter(function(comment){
+      if(comment.videoId === "abc123"){
+        this.setState({
+          comments: comment.videoId
+        })
+        console.log("filtered comments:", comment.videoId)
+      }
+    })
+  
+  }
+  
 
   onVideoSelect = (video) => {
     this.setState({
@@ -77,7 +101,6 @@ class App extends Component {
     this.setState({
       videos : response.data.items
     })
-   
   };
 
   render() {
@@ -92,6 +115,7 @@ class App extends Component {
             <Grid item xs={8}>
               {console.log("Before Video Comp:", this.state.selectedVideo)}
               {this.state.selectedVideo !== null && <VideoPlayer video={this.state.selectedVideo} />}
+              <Comment />
             </Grid>
             <Grid item xs={4}>
               <VideoList videos={this.state.videos} onVideoSelect={this.onVideoSelect}/>
