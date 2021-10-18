@@ -9,7 +9,7 @@ const VideoList = (props)=>{
     const listOfVideos = props.videos.map((video, id)=> <VideoItem onVideoSelect={props.onVideoSelect} key={id} video={video}/>)
 
     return(
-        <Grid container spacing={10}>
+        <Grid container spacing={2}>
             {listOfVideos}
         </Grid>
     );
