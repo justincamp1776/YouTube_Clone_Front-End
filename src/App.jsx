@@ -19,6 +19,7 @@ class App extends Component {
     this.getDefaultVideo();
   }
 
+  getAllComments 
 
   getDefaultVideo = async () =>{
     const response = await axios.get(
@@ -26,7 +27,7 @@ class App extends Component {
         params : {
           id : 'Q7Z5Bx-Zh38',
           part : 'snippet',
-          key :  "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU",
+          key :  "AIzaSyAaSSFVXSYhrMuUeApIDg7LTK9RVv5Rm-0",
         }
       }
 
@@ -51,7 +52,7 @@ class App extends Component {
         params: {
           part: "snippet",
           maxResults: 5,
-          key: "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU",
+          key: "AIzaSyAaSSFVXSYhrMuUeApIDg7LTK9RVv5Rm-0",
           q: searchTerm,
         },
       }
@@ -70,7 +71,7 @@ class App extends Component {
         part : 'snippet',
         relatedTo : videoId,
         maxResults : 20,
-        key : "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU"
+        key : "AIzaSyAaSSFVXSYhrMuUeApIDg7LTK9RVv5Rm-0"
       },
     })
     this.setState({
