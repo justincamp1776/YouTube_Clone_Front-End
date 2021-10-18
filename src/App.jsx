@@ -15,6 +15,29 @@ class App extends Component {
     };
   }
 
+  componentDidMount = () =>{
+    this.getDefaultVideo();
+  }
+
+
+  getDefaultVideo = async () =>{
+    const response = await axios.get(
+      "https://www.googleapis.com/youtube/v3/search", {
+        params : {
+          id : 'Q7Z5Bx-Zh38',
+          part : 'snippet',
+          key :  "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU",
+        }
+      }
+
+    )
+    this.setState({
+      selectedVideo : response.data.items[0],
+    })
+    this.getRelatedVideos();
+    console.log('componentDidMount:', response.data.items[0])
+  }
+
   onVideoSelect = (video) => {
     this.setState({
       selectedVideo: video
@@ -40,8 +63,25 @@ class App extends Component {
     console.log(this.state.selectedVideo);
   };
 
+  getRelatedVideos = async () => {
+    const videoId = this.state.selectedVideo.id.videoId
+    const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+      params : {
+        part : 'snippet',
+        relatedTo : videoId,
+        maxResults : 20,
+        key : "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU"
+      },
+    })
+    this.setState({
+      videos : response.data.items
+    })
+   
+  };
+
   render() {
     return (
+     
       <Grid justifyContent="center" container spacing={10}>
         <Grid item xs={12}>
           <Grid container spacing={10}>
@@ -58,6 +98,7 @@ class App extends Component {
           </Grid>
         </Grid>
       </Grid>
+      
     );
   }
 }
