@@ -28,7 +28,7 @@ class App extends Component {
         params : {
           id : 'Q7Z5Bx-Zh38',
           part : 'snippet',
-          key :  "AIzaSyBoHDdzfkaV4V1q1oL1C7g_lbZj2QDBT9E",
+          key :  "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU",
         }
       }
     )
@@ -53,7 +53,7 @@ class App extends Component {
         params: {
           part: "snippet",
           maxResults: 5,
-          key: "AIzaSyBoHDdzfkaV4V1q1oL1C7g_lbZj2QDBT9E",
+          key: "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU",
           q: searchTerm,
         },
       }
@@ -72,7 +72,7 @@ class App extends Component {
         part : 'snippet',
         relatedTo : videoId,
         maxResults : 20,
-        key : "AIzaSyBoHDdzfkaV4V1q1oL1C7g_lbZj2QDBT9E"
+        key : "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU"
       },
     })
     this.setState({
