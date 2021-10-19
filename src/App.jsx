@@ -83,7 +83,7 @@ class App extends Component {
   render() {
     return (
      
-      <Grid justifyContent="center" container spacing={10}>
+      <Grid justifyContent="center" container spacing={10} className="background-color">
         <Grid item xs={12}>
           <Grid container spacing={10}>
             <Grid item xs={12}>

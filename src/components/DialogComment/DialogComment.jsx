@@ -42,7 +42,7 @@ export default function DialogComment(props) {
 
   return (
     <div>
-      <Button variant="outlined"onClick={handleOpen}>Comment</Button>
+      <Button variant="outlined"onClick={handleOpen}>Post A Comment Here</Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Comment</DialogTitle>
         <DialogContent>

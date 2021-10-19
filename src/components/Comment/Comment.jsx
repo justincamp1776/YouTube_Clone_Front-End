@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NewComment from "../NewComment/NewComment";
+import Button from "@mui/material/Button";
 import Reply from '../Reply/Reply';
 import DialogComment from "../DialogComment/DialogComment";
 
+
 const Comment = (props) => {
   const [comments, setComments] = useState([]);
-  const [channelComments, setChannelComments] = useState([]);
+
 
   useEffect(() => {
     fetchAllComments();
@@ -20,13 +22,6 @@ const Comment = (props) => {
     console.log("fetchComments:", comments);
   };
 
-  const fetchCommentsWithoutVideoId = async () => {
-    const response = await axios.get(
-      `http://127.0.0.1:8000/comments/video/${props.video.id.channelId}`
-    );
-    console.log("channelComments:", response.data);
-    setChannelComments(response.data);
-  };
 
   const postComment = async (newPost) => {
     console.log("post request:", newPost);
@@ -56,7 +51,9 @@ const Comment = (props) => {
   };
 
   return (
-    <ul>
+
+    <div className="comments" >
+    <ul >
       {/* <NewComment postComment={postComment} video={props.video} /> */}
       <DialogComment postComment={postComment} video={props.video} />
       {console.log(props.video.id.videoId)}
@@ -64,23 +61,20 @@ const Comment = (props) => {
       {setComments != null &&
         comments.map((comment) => {
           return (
-            <li>
+            <li style={{color:"white", fontFamily: "monospace", fontSize: "20pt"}}>
               {comment.text}{" "}
-              <button onClick={() => likeComment(comment.id)}>Like</button>{" "}
+              <Button onClick={() => likeComment(comment.id)}>Like</Button>{" "}
               {comment.likes}{" "}
-              <button onClick={() => dislikeComment(comment.id)}>
+              <Button onClick={() => dislikeComment(comment.id)}>
                 Dislike
-              </button>{" "}
+              </Button>{" "}
               {comment.dislikes}
               <Reply commentId={comment.id} />
             </li>
           );
         })}
-      {setChannelComments != null &&
-        channelComments.map((channelComments) => {
-          return <li>{channelComments.text}</li>;
-        })}
     </ul>
+    </div>
   );
 };
 
