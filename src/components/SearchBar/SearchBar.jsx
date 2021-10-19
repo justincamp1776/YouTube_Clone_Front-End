@@ -22,8 +22,8 @@ class SearchBar extends Component {
   
     render() { 
         return (  
-            <Paper elevation={6} style={{padding:'25px'}}>
-            <form onSubmit={this.handleSubmit}>
+            <Paper elevation={6} style={{padding:'25px', backgroundColor: "black", color: "white"}}>
+            <form onSubmit={this.handleSubmit} style={{backgroundColor: "white"}}>
                 <TextField fullWidth label="Search for..." onChange={this.handleChange}></TextField>
             </form>
             </Paper>

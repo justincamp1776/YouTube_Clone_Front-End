@@ -61,7 +61,7 @@ const Comment = (props) => {
       {setComments != null &&
         comments.map((comment) => {
           return (
-            <li style={{color:"white", fontFamily: "monospace", fontSize: "20pt"}}>
+            <li style={{color:"white", fontFamily: "monospace", fontSize: "15pt"}}>
               {comment.text}{" "}
               <Button onClick={() => likeComment(comment.id)}>Like</Button>{" "}
               {comment.likes}{" "}

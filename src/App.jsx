@@ -13,7 +13,6 @@ class App extends Component {
     this.state = {
       videos: [],
       selectedVideo: null,
-      comments: [],
     };
   }
 
@@ -26,9 +25,9 @@ class App extends Component {
     const response = await axios.get(
       "https://www.googleapis.com/youtube/v3/search", {
         params : {
-          id : 'Q7Z5Bx-Zh38',
+          id : '3VQcDPq4FlY',
           part : 'snippet',
-          key :  "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU",
+          key :  " AIzaSyAXDq7ius4ODeCMYz12YhdouIn-pHK8Rp4",
         }
       }
     )
@@ -39,21 +38,22 @@ class App extends Component {
     console.log('componentDidMount:', response.data.items[0])
   }
 
-
+  // The function below is used as an onSelect Callback in VideoItem
    onVideoSelect = (video) => {
     this.setState({
       selectedVideo: video
     });
   }
 
+  // This function queries youtube database using the searchTerm provided in the search bar
   getVideoSearch = async (searchTerm) => {
     const response = await axios.get(
       "https://www.googleapis.com/youtube/v3/search",
       {
         params: {
           part: "snippet",
-          maxResults: 5,
-          key: "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU",
+          maxResults: 40,
+          key: " AIzaSyAXDq7ius4ODeCMYz12YhdouIn-pHK8Rp4",
           q: searchTerm,
         },
       }
@@ -65,14 +65,16 @@ class App extends Component {
     console.log(this.state.selectedVideo);
   };
 
+
+  // Provides a list of 20 related videos
   getRelatedVideos = async () => {
     const videoId = this.state.selectedVideo.id.videoId
     const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
       params : {
         part : 'snippet',
         relatedTo : videoId,
-        maxResults : 20,
-        key : "AIzaSyDCLA0aiIGqpWK8-alDjxOQn0XmE30FLfU"
+        maxResults : 40,
+        key : " AIzaSyAXDq7ius4ODeCMYz12YhdouIn-pHK8Rp4"
       },
     })
     this.setState({
@@ -90,6 +92,7 @@ class App extends Component {
               <SearchBar formSubmission={this.getVideoSearch} />
             </Grid>
             <Grid item xs={8}>
+                <a id="videoPlayer">VideoPlayer</a>
               {console.log("Before Video Comp:", this.state.selectedVideo)}
               {this.state.selectedVideo !== null && <VideoPlayer video={this.state.selectedVideo} />}
               {this.state.selectedVideo !== null && <Comment video={this.state.selectedVideo} />}
