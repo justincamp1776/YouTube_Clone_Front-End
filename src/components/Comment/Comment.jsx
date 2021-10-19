@@ -54,6 +54,7 @@ const Comment = (props) => {
 
     <div className="comments" >
     <ul >
+      {/* The component below was replaced with DialogComment */}
       {/* <NewComment postComment={postComment} video={props.video} /> */}
       <DialogComment postComment={postComment} video={props.video} />
       {console.log(props.video.id.videoId)}

@@ -10,10 +10,10 @@ const VideoPlayer = (props) => {
 
 
   return (
-    // <h1>Stop</h1>
+
  
       <React.Fragment>
-        <Paper elevation={6} style={{ height: "7.5%" }}>
+        <Paper elevation={6} style={{ height: "5%" }}>
           <iFrame
             frameBorder="3px"
             height="100%"

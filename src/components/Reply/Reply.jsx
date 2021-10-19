@@ -48,6 +48,7 @@ const Reply = (props) => {
               </ul>
           );
       })}
+      {/* The component below was replaced with DialogReply */}
       {/* <NewReply commentId={props.commentId} postReply={postReply} /> */}
       <DialogReply commentId={props.commentId} postReply={postReply} />
       {console.log("reply:", props.commentId)}

@@ -52,7 +52,7 @@ class App extends Component {
       {
         params: {
           part: "snippet",
-          maxResults: 40,
+          maxResults: 50,
           key: " AIzaSyAXDq7ius4ODeCMYz12YhdouIn-pHK8Rp4",
           q: searchTerm,
         },
@@ -60,20 +60,20 @@ class App extends Component {
     );
     this.setState({
       videos: response.data.items,
-      selectedVideo: response.data.items[0],
+      selectedVideo: response.data.items[1],
     });
     console.log(this.state.selectedVideo);
   };
 
 
-  // Provides a list of 20 related videos
+  // Provides a list of 50 related videos
   getRelatedVideos = async () => {
     const videoId = this.state.selectedVideo.id.videoId
     const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
       params : {
         part : 'snippet',
-        relatedTo : videoId,
-        maxResults : 40,
+        relaterelatedToVideoId : videoId,
+        maxResults : 50,
         key : " AIzaSyAXDq7ius4ODeCMYz12YhdouIn-pHK8Rp4"
       },
     })

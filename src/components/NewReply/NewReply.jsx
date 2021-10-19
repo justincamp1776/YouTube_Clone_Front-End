@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+
+// This component is no longer in use and was replaced with DialogReply
+
+
 class NewReply extends Component {
     constructor(props) {
         super(props);

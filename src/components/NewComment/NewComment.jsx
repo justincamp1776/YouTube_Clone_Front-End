@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 
+
+// This Component is not in use and was replaced with DialogComment
+
+
 class NewComment extends Component {
   constructor(props) {
     super(props);
