@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import NewReply from "../NewReply/NewReply";
-import DialogReply from "../DialogueReply/DialogueReply";
+import DialogReply from "../DialogReply/DialogReply";
 
 const Reply = (props) => {
   const [replies, setReply] = useState([]);

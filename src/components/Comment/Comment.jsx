@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NewComment from "../NewComment/NewComment";
 import Reply from '../Reply/Reply';
+import DialogComment from "../DialogComment/DialogComment";
 
 const Comment = (props) => {
   const [comments, setComments] = useState([]);
@@ -56,7 +57,8 @@ const Comment = (props) => {
 
   return (
     <ul>
-      <NewComment postComment={postComment} video={props.video} />
+      {/* <NewComment postComment={postComment} video={props.video} /> */}
+      <DialogComment postComment={postComment} video={props.video} />
       {console.log(props.video.id.videoId)}
       {console.log("return:", comments)}
       {setComments != null &&
