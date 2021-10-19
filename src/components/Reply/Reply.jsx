@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
 import NewReply from "../NewReply/NewReply";
+import DialogReply from "../DialogueReply/DialogueReply";
 
 const Reply = (props) => {
   const [replies, setReply] = useState([]);
@@ -47,7 +48,8 @@ const Reply = (props) => {
               </ul>
           );
       })}
-      <NewReply commentId={props.commentId} postReply={postReply} />
+      {/* <NewReply commentId={props.commentId} postReply={postReply} /> */}
+      <DialogReply commentId={props.commentId} postReply={postReply} />
       {console.log("reply:", props.commentId)}
     </div>
   );
